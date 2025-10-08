@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkyOptima - Air Traffic Simulation</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="topbar">
+        <div class="title">SkyOptima</div>
+        <div class="actions">
+            <button id="startBtn" class="btn-primary">
+                <span class="btn-icon">▶</span>
+                Start
+            </button>
+            <button id="stopBtn" class="btn-secondary">
+                <span class="btn-icon">⏸</span>
+                Stop
+            </button>
+            <button id="resetBtn" class="btn-danger">
+                <span class="btn-icon">↻</span>
+                Reset
+            </button>
+        </div>
+    </div>
+    <div class="main">
+        <div class="left">
+            <div class="section">
+                <div class="section-title">Simulation Controls</div>
+                <div class="form-group">
+                    <label for="countInput">Aircraft Count</label>
+                    <input id="countInput" type="number" min="3" max="10" value="5" placeholder="3-10 aircraft">
+                </div>
+                <div class="form-group">
+                    <label for="tickInput">Update Interval (ms)</label>
+                    <input id="tickInput" type="number" min="100" step="100" value="1000" placeholder="100-5000ms">
+                </div>
+                <div class="form-group">
+                    <label for="worldInput">World Size</label>
+                    <input id="worldInput" type="number" min="50" max="1000" value="100" placeholder="50-1000 units">
+                </div>
+                <div class="form-group">
+                    <label for="sepInput">Min Separation</label>
+                    <input id="sepInput" type="number" min="2" value="8" placeholder="2+ units">
+                </div>
+                <div class="row">
+                    <button id="applyBasic" class="btn-outline">Apply Basic</button>
+                    <button id="applyAdvanced" class="btn-outline">Apply Advanced</button>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">
+                    <span>Active Alerts</span>
+                    <span class="alert-count" id="alertCount">0</span>
+                </div>
+                <div class="alert-container">
+                    <ul id="alerts"></ul>
+                    <div class="empty-state" id="emptyAlerts">No active alerts</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">
+                    <span>Event Log</span>
+                    <button class="btn-clear" id="clearLog">Clear</button>
+                </div>
+                <div class="log-container">
+                    <ul id="log"></ul>
+                    <div class="empty-state" id="emptyLog">No events yet</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="right">
+            <div class="canvas-container">
+                <canvas id="canvas" width="640" height="640"></canvas>
+                <div class="canvas-overlay">
+                    <div class="status-indicator" id="simulationStatus">
+                        <span class="status-dot"></span>
+                        <span class="status-text">Stopped</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>/* no-store */</script>
+    <meta http-equiv="Cache-Control" content="no-store" />
+</body>
+</html>
+
+
